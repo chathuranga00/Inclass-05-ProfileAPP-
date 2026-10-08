@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -6,9 +6,12 @@ import {
   StyleSheet,
   SafeAreaView,
   TouchableOpacity,
+  AppRegistry,
 } from 'react-native';
 
 export default function App() {
+  const [points, setPoints] = useState(0);
+
   return (
     <SafeAreaView style={styles.safeArea}>
       {/* Header */}
@@ -39,26 +42,26 @@ export default function App() {
         <View style={styles.infoSection}>
           {/* Name */}
           <Text style={styles.label}>Name</Text>
-          <Text style={styles.value}>Diluka</Text>
+          <Text style={styles.value}>Chathuranga</Text>
 
           {/* Email */}
           <Text style={styles.label}>Email</Text>
           <View style={styles.row}>
             <Text style={styles.icon}>✉</Text>
-            <Text style={styles.value}>diluka.w@nsbm.ac.lk</Text>
+            <Text style={styles.value}>hacsandaruwan@students.nsbm.ac.lk</Text>
           </View>
 
           {/* Points */}
           <Text style={styles.label}>Points</Text>
           <View style={styles.row}>
             <Text style={styles.starIcon}>★</Text>
-            <Text style={styles.value}>0</Text>
+            <Text style={styles.value}>{points}</Text>
           </View>
         </View>
       </View>
 
       {/* Floating Action Button */}
-      <TouchableOpacity style={styles.fab}>
+      <TouchableOpacity style={styles.fab} onPress={() => setPoints(prev => prev + 1)}>
         <Text style={styles.fabText}>+</Text>
       </TouchableOpacity>
     </SafeAreaView>
@@ -187,3 +190,5 @@ const styles = StyleSheet.create({
     fontWeight: '300',
   },
 });
+
+AppRegistry.registerComponent('main', () => App);
